@@ -24,7 +24,7 @@ class ProjectController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $projects = $this->projectRepository->paginate(10);
+        $projects = $this->projectRepository->all();
 
         return view('projects.index')
             ->with('projects', $projects);
@@ -44,7 +44,6 @@ class ProjectController extends AppBaseController
     public function store(CreateProjectRequest $request)
     {
         $input = $request->all();
-
         $project = $this->projectRepository->create($input);
 
         Flash::success(__('messages.saved', ['model' => __('models/projects.singular')]));

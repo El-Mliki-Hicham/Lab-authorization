@@ -3,6 +3,8 @@
 @section("content")
 
 <div class="card">
+
+
     <div class="card-header">
 
         <a href="{{route("projects.create")}} " class="btn btn-primary">ajouter</a>
@@ -22,9 +24,13 @@
 
         <td>{{$project->name}} </td>
         <td>{{$project->description}} </td>
-        <td>
-            <button class="btn btn-warning">Modifier</button>
+        <td class="d-flex ">
+            <a href="{{route('projects.edit',$project->id)}} " class="btn btn-warning">Modifier</a>
+           <form action="{{route('projects.destroy',$project->id)}}" method="post" style="margin-left: 23px">
+            @csrf
+            @method("delete")
             <button class="btn btn-danger">suprimer</button>
+        </form>
         </td>
     </tr>
     @endforeach

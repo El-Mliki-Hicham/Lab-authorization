@@ -11,23 +11,24 @@
         </div>
 
 
-        <form action="{{route('projects.store')}}" method="POST" >
+        <form action="{{route('projects.update',$project->id)}}" method="POST" >
             @csrf
+            @method("put")
             <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputName">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                    <input type="text" class="form-control" value="{{$project->name}} " id="name" name="name" placeholder="Enter name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName">Discription</label>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
+                    <input type="text" class="form-control"  value="{{$project->description}} " id="description" name="description" placeholder="Enter description">
                 </div>
 
 
             </div>
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-warning">update</button>
             </div>
         </form>
     </div>
